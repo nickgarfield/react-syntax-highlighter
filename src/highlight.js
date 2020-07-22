@@ -8,7 +8,8 @@ function getNewLines(str) {
 
 function getLineNumbers({ lines, startingLineNumber, numberProps = {} }) {
   return lines.map((_, i) => {
-    const number = startingLineNumber === 'string' ? i : i + startingLineNumber;
+    const number =
+      typeof startingLineNumber === 'string' ? i : i + startingLineNumber;
     const properties =
       typeof numberProps === 'function' ? numberProps(number) : numberProps;
     const content =
