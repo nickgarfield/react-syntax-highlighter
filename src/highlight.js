@@ -8,19 +8,18 @@ function getNewLines(str) {
 
 function getLineNumbers({ lines, startingLineNumber, numberProps = {} }) {
   return lines.map((_, i) => {
-    const lineNumber =
-      typeof startingLineNumber === 'string'
-        ? startingLineNumber
-        : i + startingLineNumber;
+    const number = startingLineNumber === 'string' ? i : i + startingLineNumber;
     const properties =
       typeof numberProps === 'function' ? numberProps(number) : numberProps;
+    const content =
+      typeof startingLineNumber === 'string' ? startingLineNumber : number;
     return (
       <span
         key={`line-${i}`}
         className="react-syntax-highlighter-line-number"
         {...properties}
       >
-        {`${lineNumber}\n`}
+        {`${content}\n`}
       </span>
     );
   });

@@ -14,12 +14,13 @@ function getLineNumbers(_ref) {
       _ref$numberProps = _ref.numberProps,
       numberProps = _ref$numberProps === void 0 ? {} : _ref$numberProps;
   return lines.map(function (_, i) {
-    var lineNumber = typeof startingLineNumber === 'string' ? startingLineNumber : i + startingLineNumber;
+    var number = startingLineNumber === 'string' ? i : i + startingLineNumber;
     var properties = typeof numberProps === 'function' ? numberProps(number) : numberProps;
+    var content = typeof startingLineNumber === 'string' ? startingLineNumber : number;
     return /*#__PURE__*/React.createElement("span", _extends({
       key: "line-".concat(i),
       className: "react-syntax-highlighter-line-number"
-    }, properties), "".concat(lineNumber, "\n"));
+    }, properties), "".concat(content, "\n"));
   });
 }
 
